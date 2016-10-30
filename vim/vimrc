@@ -1,0 +1,66 @@
+call pathogen#infect()
+call pathogen#helptags()
+set autoindent
+
+if has("vms")
+  set nobackup
+else
+  set backup
+endif
+
+set history=50
+set ruler
+set showcmd
+set nu
+set foldmethod=marker
+set foldmarker='{{{,}}}'
+map Q gq
+syntax on
+map <F2> :w
+colorscheme Crystallite
+if has('gui_running')
+    set guifont=Source\ Code\ Pro\ Medium\ 16
+endif
+
+filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
+set autoindent
+nmap <C-S-P> :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+    if exists("*synstack")
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    endif
+endfunc
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" YCM settings
+"let g:ycm_seed_identifiers_with_syntax = 1
+"let g:ycm_add_preview_to_completeopt = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_auto_trigger = 1
+":set cpoptions+=$
+
+set tags+=~/.vim/tags/cpp
+set tags+=~/.vim/tags/gl
+set tags+=~/.vim/tags/sdl
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1
+let OmniCpp_MayCompleteDot = 1
+let OmniCpp_MayCompleteArrow = 1
+let OmniCpp_MayCompleteScope = 1
+let OmniCpp_DefaultNamespaces = ["std"]
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
+
+set nowrap
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set statusline=%#ErrorMsg#%{fugitive#statusline()}%#StatusLine#
+
+"autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP

@@ -1,0 +1,4 @@
+URxvt*reverseVideo:     on
+URxvt*utf8:             2
+URxvt*font:		xft:sauce code powerline:size=12:antialias=true
+URxvt*dynamicColors:    true

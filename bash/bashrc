@@ -1,0 +1,31 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# powerline
+powerline-daemon -q
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+. /usr/lib/python3.5/site-packages/powerline/bindings/bash/powerline.sh
+
+# utilities
+alias ls='ls --color=auto'
+alias sl='ls'
+alias lsg='ls | grep'
+alias lesla='ls -hla | less'
+alias tmux='tmux -2'
+function mdcd() {
+ mkdir "$@"
+ cd "$@"
+}
+# useful programs
+alias minecraft='java -jar ~/Downloads/Minecraft.jar'
+alias tracker="/opt/tracker/tracker.sh"
+export EDITOR=$(which vim)
+eval "$(fasd --init auto)"
+# path to rubygems
+export PATH=$PATH:/home/jasku/.gem/ruby/2.3.0/bin
+export TERM=xterm-256color
