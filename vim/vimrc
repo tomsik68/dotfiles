@@ -1,9 +1,9 @@
 set nocompatible
-filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 " powerline
 set rtp+=/usr/lib/python3.5/site-packages/powerline/bindings/vim/
+set rtp+=~/dotfiles/vim/ultisnips-snippets
 set t_Co=256
 " always show status line
 set laststatus=2
@@ -12,22 +12,44 @@ call vundle#begin()
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Yggdroot/indentLine'
-Plugin 'Raimondi/delimitMate'
+"Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'rhysd/vim-clang-format'
-Plugin 'jeaye/color_coded'
+"Plugin 'jeaye/color_coded'
 Plugin 'benmills/vimux'
 Plugin 'osyo-manga/vim-marching'
+"Plugin 'vim-syntastic/syntastic'
+"Plugin 'Scuilion/gradle-syntastic-plugin'
+Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'airblade/vim-rooter'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'abudden/taghighlight-automirror'
+Plugin 'godlygeek/tabular'
+Plugin 'sjl/gundo.vim'
 call vundle#end()
 
 let g:UltiSnipsExpandTrigger="<c-p>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-let g:indentLine_color_term = 239
-let g:indentLine_color_gui = '#09AA08'
-let g:indentLine_char = '│'
+let g:syntastic_java_checkers=['javac']
+let g:syntastic_java_javac_config_file_enabled = 1
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:rooter_patterns = ['Makefile', 'build.gradle']
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetsDir = "~/dotfiles/vim/ultisnips-snippets"
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
 
 let g:clang_library_path='/usr/lib64/libclang.so.3.8'
 
@@ -47,20 +69,39 @@ nmap <leader><leader> :w<cr>
 nmap <leader>s :w !sudo tee %<cr>
 " C/C++: run make
 nmap <leader>m :make<cr>
+" CLang format
+nmap <leader>c :ClangFormat<cr>
 
-filetype plugin indent on
+" Tabular alignment
+nmap <leader>a= :Tab /=<cr>
+nmap <leader>a: :Tab /:<cr>
+
+" history
+nmap <leader>h :GundoToggle<cr>
+
+
+if has("autocmd")
+        filetype plugin indent on
+
+        " restore cursor position
+        autocmd BufReadPost *
+                                \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                                \   exe "normal! g`\"" |
+                                \ endif
+endif
 set autoindent
 
 if has("vms")
- set nobackup
+        set nobackup
 else
- set backup
+        set backup
 endif
 
 set path+=**
 set wildmenu
 
 command MakeTags !ctags -R .
+command ClangFormat !clang-format --style=file -i %
 
 set history=50
 set ruler
@@ -69,19 +110,28 @@ set showcmd
 set nu
 set relativenumber
 
+" set tab to 4 chars
+set expandtab sts=4 ts=4
+
+" set wrap lines & break without breaking words
+set wrap lbr nolist
+
+" use par for formatting
+set formatprg=par\ -w80rjc
+
 set foldmethod=marker
 set foldmarker='{{{,}}}'
 syntax on
 colorscheme Crystallite
 if has('gui_running')
- set guifont=Source\ Code\ Pro\ Medium\ 16
+        set guifont=Source\ Code\ Pro\ Medium\ 16
 endif
 
 nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
- if exists("*synstack")
-  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
- endif
+        if exists("*synstack")
+                echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+        endif
 endfunc
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 set exrc
