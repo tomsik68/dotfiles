@@ -29,3 +29,5 @@ export EDITOR=$(which vim)
 # path to rubygems
 export PATH=$PATH:/home/jasku/.gem/ruby/2.3.0/bin
 export TERM=screen-256color
+
+. /usr/share/z/z.sh
