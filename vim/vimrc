@@ -12,6 +12,7 @@ call vundle#begin()
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tomsik68/vim-crystallite'
 "Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdtree'
 Plugin 'rhysd/vim-clang-format'
@@ -89,7 +90,7 @@ if has("autocmd")
                                 \   exe "normal! g`\"" |
                                 \ endif
 endif
-set autoindent
+"set autoindent
 
 if has("vms")
         set nobackup
@@ -111,7 +112,7 @@ set nu
 set relativenumber
 
 " set tab to 4 chars
-set expandtab sts=4 ts=4
+set expandtab sts=4 ts=4 shiftwidth=4
 
 " set wrap lines & break without breaking words
 set wrap lbr nolist
