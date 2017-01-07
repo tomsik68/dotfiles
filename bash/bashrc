@@ -17,10 +17,18 @@ alias ls='ls --color=auto'
 alias sl='ls'
 alias lsg='ls | grep'
 alias lesla='ls -hla | less'
-alias tmux='tmux -2'
+alias tm='tmux -2'
+alias ta='tmux attach'
 function mdcd() {
  mkdir "$@"
  cd "$@"
+}
+# github clone function
+function gh() {
+  git clone "https://github.com/$@"
+}
+function webserver() {
+    python2 -m SimpleHTTPServer 8000
 }
 # useful programs
 alias minecraft='java -jar ~/Downloads/Minecraft.jar'
@@ -29,5 +37,6 @@ export EDITOR=$(which vim)
 # path to rubygems
 export PATH=$PATH:/home/jasku/.gem/ruby/2.3.0/bin
 export TERM=screen-256color
+export PANEL_FIFO="/tmp/panel-fifo"
 
 . /usr/share/z/z.sh
