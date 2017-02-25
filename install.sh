@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x
 echo Running from $(pwd)
 
 ln -s $(pwd)/vim/ $HOME/.vim
