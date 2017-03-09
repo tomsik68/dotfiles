@@ -35,7 +35,7 @@ alias minecraft='java -jar ~/Downloads/Minecraft.jar'
 alias tracker="/opt/tracker/tracker.sh"
 export EDITOR=$(which vim)
 # path to rubygems
-export PATH=$PATH:/home/jasku/.gem/ruby/2.3.0/bin
+export PATH=$PATH:~/.gem/ruby/2.4.0/bin:~/dotfiles/scripts
 export TERM=screen-256color
 export PANEL_FIFO="/tmp/panel-fifo"
 
