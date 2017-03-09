@@ -2,7 +2,19 @@
 set -x
 echo Running from $(pwd)
 
-ln -s $(pwd)/vim/ $HOME/.vim
-ln -s $(pwd)/tmux/tmux.conf $HOME/.tmux.conf
-ln -s $(pwd)/bash/bashrc $HOME/.bashrc
-ln -s $(pwd)/bash/profile $HOME/.profile
+function bk_mv() {
+    [ -e $HOME/$1 ] && mv $HOME/$1 $HOME/$1.bak
+}
+
+function bk_ln() {
+    bk_mv $1
+    ln -s $(pwd)/$2 $HOME/$1
+}
+
+bk_ln .tmux.conf tmux/tmux.conf
+bk_ln .bashrc bash/bashrc
+bk_ln .profile bash/profile
+bk_ln .vim vim
+bk_mv .vimrc
+bk_ln .config/bspwm bspwm
+bk_ln .gitconfig git/gitconfig
