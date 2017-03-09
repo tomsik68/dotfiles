@@ -19,24 +19,22 @@ alias lsg='ls | grep'
 alias lesla='ls -hla | less'
 alias tm='tmux -2'
 alias ta='tmux attach'
+alias pu='phpunit'
+alias cc='calcurse'
+
 function mdcd() {
- mkdir "$@"
- cd "$@"
-}
-# github clone function
-function gh() {
-  git clone "https://github.com/$@"
-}
-function webserver() {
-    python2 -m SimpleHTTPServer 8000
+    mkdir "$@"
+    cd "$@"
 }
 # useful programs
 alias minecraft='java -jar ~/Downloads/Minecraft.jar'
 alias tracker="/opt/tracker/tracker.sh"
 export EDITOR=$(which vim)
+
 # path to rubygems
 export PATH=$PATH:~/.gem/ruby/2.4.0/bin:~/dotfiles/scripts
 export TERM=screen-256color
 export PANEL_FIFO="/tmp/panel-fifo"
 
 . /usr/share/z/z.sh
+eval $(keychain --eval --quiet --confhost)
