@@ -18,3 +18,6 @@ bk_ln .vim vim
 bk_mv .vimrc
 bk_ln .config/bspwm bspwm
 bk_ln .gitconfig git/gitconfig
+[ -d ~/.emacs.d ] || mkdir ~/.emacs.d
+bk_ln .emacs.d/init.el emacs.d/init.el
+bk_ln .emacs.d/configuration.org emacs.d/configuration.org

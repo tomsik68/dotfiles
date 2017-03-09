@@ -1,0 +1,96 @@
+* Inspiration
+  My emacs configuration is heavily inspired by Harry Schwartz. Thank you for sharing your ideas, Harry!
+* Package management
+  Use package.el to manage packages
+  #+BEGIN_SRC emacs-lisp
+(require 'package)
+  #+END_SRC
+** Packages directory
+   Install packages to elpa directory in emacs config:
+   #+BEGIN_SRC emacs-lisp
+(setq package-user-dir "~/.emacs.d/elpa/")
+   #+END_SRC
+** Package Sources
+*** Melpa
+    Add melpa to software sources
+    #+BEGIN_SRC emacs-lisp
+(add-to-list 'package-archives
+			  '("melpa" . "https://melpa.org/packages/") t)
+    #+END_SRC
+** Define package list
+   Initialize package
+   #+BEGIN_SRC emacs-lisp
+(package-initialize)
+(defvar my-packages
+  '(
+    interleave
+    evil
+	      multiple-cursors
+		   ))
+   #+END_SRC
+
+** Refresh package sources
+   #+BEGIN_SRC
+(package-initialize)
+
+(unless package-archive-contents (package-refresh-contents))
+   #+END_SRC
+*** Install packages that are not already installed
+    #+BEGIN_SRC emacs-lisp
+(dolist (package my-packages)
+    (unless (package-installed-p package)
+      (package-install package)))
+    #+END_SRC
+    
+* Appearance
+  
+** Color Theme
+   Tango-dark is good enough for now
+   #+BEGIN_SRC emacs-lisp
+   (load-theme 'tango-dark)
+   #+END_SRC
+** Disable menubar & toolbar
+
+   #+BEGIN_SRC emacs-lisp
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+   #+END_SRC
+   
+** Show line numbers
+   Show line numbers, but only if programming
+   #+BEGIN_SRC emacs-lisp
+   (add-hook 'prog-mode-hook 'linum-mode)
+   #+END_SRC
+
+* Editing
+  
+** Org-mode
+   
+   
+*** Disable code execution confirm
+    #+BEGIN_SRC emacs-lisp
+(setq org-confirm-babel-evaluate nil)
+    #+END_SRC
+*** Load org-babel languages
+
+    Load lisp, python and calc
+    #+BEGIN_SRC emacs-lisp
+(org-babel-do-load-languages
+   'org-babel-load-languages
+    '((lisp . t)
+      (python . t)
+      (calc . t)
+      ))
+    #+END_SRC
+
+*** Display LaTeX entities as UTF-8 in org-mode
+    #+BEGIN_SRC emacs-lisp
+(add-hook 'org-mode-hook 'org-toggle-pretty-entities)
+    #+END_SRC
+
+** Use eVIl
+   Use eVIl mode when editing text or when programming
+   #+BEGIN_SRC emacs-lisp
+(add-hook 'text-mode-hook 'evil-mode)
+(add-hook 'prog-mode-hook 'evil-mode)
+   #+END_SRC
