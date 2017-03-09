@@ -2,7 +2,8 @@
 
 sxhkd &
 
-bspc monitor `bspc query -M | head -n 1` -d 1 2 3 4 5 6 7 8 9
+bspc monitor -d 1 2 3 4 5 6 7 8 9
+bspc monitor "eDP1" -d 1 2 3 4 5 6 7 8 9
 
 bspc config border_width         0
 bspc config window_gap          0
@@ -18,5 +19,6 @@ bspc rule -a "*" state=tiled
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
 
-feh --bg-fill ~/Pictures/notebook_bg.jpg
-ruby /home/jasku/dotfiles/bspwm/barr | lemonbar -f "Roboto Medium" -f "Font Awesome"
+feh --bg-fill ~/pictures/notebook_bg.jpg
+(ruby ~/dotfiles/bspwm/barr | lemonbar -f "Roboto Medium" -f "Font Awesome")&
+stalonetray
