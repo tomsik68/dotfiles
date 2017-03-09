@@ -24,6 +24,7 @@ if dein#load_state(dein_plugins_dir)
   call dein#add('brookhong/cscope.vim')
   call dein#add('udalov/kotlin-vim')
   call dein#add('tomsik68/vim-crystallite')
+  call dein#add('tpope/vim-commentary')
   call dein#end()
 
   call dein#save_state()

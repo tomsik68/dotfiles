@@ -16,3 +16,6 @@ endif
 
 " always show status line
 set laststatus=2
+
+" show line numbers
+set number

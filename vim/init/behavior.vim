@@ -10,6 +10,9 @@ endif
 " execure project-specific vim files, but securely
 set exrc secure
 
+" enable modelines
+set modeline
+
 " get rid of swp and backup files
 set nobackup
 set noswapfile
