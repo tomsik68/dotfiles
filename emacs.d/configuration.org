@@ -25,7 +25,12 @@
   '(
     interleave
     evil
-	      multiple-cursors
+    haskell-mode
+    ghci-completion
+    haskell-mode
+    haskell-tab-indent
+    intero
+    multiple-cursors
 		   ))
    #+END_SRC
 
@@ -80,6 +85,8 @@
     '((lisp . t)
       (python . t)
       (calc . t)
+      (latex . t)
+      (haskell . t)
       ))
     #+END_SRC
 
