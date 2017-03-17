@@ -21,6 +21,7 @@ alias tm='tmux -2'
 alias ta='tmux attach'
 alias pu='phpunit'
 alias cc='calcurse'
+alias :e='vim'
 
 function mdcd() {
     mkdir "$@"
