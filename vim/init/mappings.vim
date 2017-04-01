@@ -14,6 +14,9 @@ nmap <leader><leader> :w<cr>
 nmap <leader>s :w !sudo tee %<cr>
 " C/C++: run make
 nmap <leader>m :make<cr>
+" next/previous (compilation) error
+nmap <leader>n :cn<cr>
+nmap <leader>N :cp<cr>
 " CLang format
 nmap <leader>c :ClangFormat<cr>
 
