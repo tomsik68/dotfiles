@@ -21,7 +21,7 @@ end
 
 @manager = Barr::Manager.new
 
-@manager.add Barr::Blocks::Bspwm.new icon: "\uf009", monitor: "eDP1", invert_focus_colors: true, align: :l, focus_markers: [' ', ' '], interval: 0.1
+@manager.add Barr::Blocks::Bspwm.new icon: "\uf009", monitor: ARGV[0], invert_focus_colors: true, align: :l, focus_markers: [' ', ' '], interval: 0.1
 
 @manager.add Barr::Blocks::Battery.new fgcolor: '#000000', bgcolor: '#673AB7',show_remaining: true, align: :r, icon: "\uf242"
 #@manager.add Barr::Blocks::Temperature.new fgcolor: '#000000', bgcolor: '#1DE9B6', align: :r, icon: "\uf185 Brno", location: '786869'
