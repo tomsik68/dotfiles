@@ -27,6 +27,7 @@ end
 #@manager.add Barr::Blocks::Temperature.new fgcolor: '#000000', bgcolor: '#1DE9B6', align: :r, icon: "\uf185 Brno", location: '786869'
 @manager.add MixerBlock.new fgcolor: '#000000', bgcolor: '#00FF00', align: :r, icon: "\uf028"
 @manager.add Barr::Blocks::IP.new fgcolor: '#000000',bgcolor: '#CDDC39', align: :r, device: 'wlp3s0', icon: "\uf1eb"
-@manager.add Barr::Blocks::Clock.new fgcolor: '#000000', bgcolor: '#D50000',icon: "\uf017", format: '%a %d %b %H:%M',show_remaining: true, align: :r
+@manager.add Barr::Blocks::IP.new fgcolor: '#000000',bgcolor: '#CDDC39', align: :r, device: 'enp2s0', icon: "\uf0e7"
+@manager.add Barr::Blocks::Clock.new fgcolor: '#000000', bgcolor: '#D50000',icon: "\uf252", format: '%a %d %b %H:%M',show_remaining: true, align: :r
 
 @manager.run!
