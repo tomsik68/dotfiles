@@ -54,7 +54,8 @@ function swap()
 # useful programs
 alias minecraft='java -jar ~/Downloads/Minecraft.jar'
 alias tracker="/opt/tracker/tracker.sh"
-export EDITOR=$(which vim)
+export EDITOR=$(which nvim)
+export CXX=$(which g++)
 
 # path to rubygems
 export PATH=$PATH:~/.gem/ruby/2.4.0/bin:~/dotfiles/scripts
