@@ -20,18 +20,20 @@
 ** Define package list
    Initialize package
    #+BEGIN_SRC emacs-lisp
-(package-initialize)
-(defvar my-packages
-  '(
-    interleave
-    evil
-    haskell-mode
-    ghci-completion
-    haskell-mode
-    haskell-tab-indent
-    intero
-    multiple-cursors
-		   ))
+     (package-initialize)
+     (defvar my-packages
+       '(
+         interleave
+         evil
+         haskell-mode
+         ghci-completion
+         haskell-mode
+         haskell-tab-indent
+         intero
+         multiple-cursors
+         graphviz-dot-mode
+         wolfram
+                        ))
    #+END_SRC
 
 ** Refresh package sources
@@ -80,14 +82,16 @@
 
     Load lisp, python and calc
     #+BEGIN_SRC emacs-lisp
-(org-babel-do-load-languages
-   'org-babel-load-languages
-    '((lisp . t)
-      (python . t)
-      (calc . t)
-      (latex . t)
-      (haskell . t)
-      ))
+      (org-babel-do-load-languages
+         'org-babel-load-languages
+          '(
+            (emacs-lisp . t)
+            (python . t)
+            (calc . t)
+            (latex . t)
+            (haskell . t)
+            (dot . t)
+            ))
     #+END_SRC
 
 *** Display LaTeX entities as UTF-8 in org-mode
@@ -101,3 +105,4 @@
 (add-hook 'text-mode-hook 'evil-mode)
 (add-hook 'prog-mode-hook 'evil-mode)
    #+END_SRC
+   
