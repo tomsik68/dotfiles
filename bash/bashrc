@@ -13,18 +13,31 @@ POWERLINE_BASH_SELECT=1
 export PS1=""
 
 # utilities
-alias l='ls'
-alias c='clear'
-alias ls='ls --color=auto'
-alias sl='ls'
-alias lsg='ls | grep'
-alias lesla='ls -hla | less'
-alias tm='tmux -2'
-alias ta='tmux attach'
-alias pu='phpunit'
+alias ..='cd ..'
+alias vim=nvim
+alias e='vim'
 alias :e='vim'
-alias m='make'
+alias E='vim +:E'
+alias :E='vim +:E'
+alias ZZ='exit'
+alias ZQ='exit'
+alias c='clear && ls'
+alias cal='cal -Ym'
+alias d='cd'
+alias g='git'
+alias l='ls'
+alias lesla='ls -hla | less'
+alias ls='ls --color=auto'
+alias lsg='ls | grep'
+alias m='make -j16'
 alias mle='make 2>&1 | less'
+alias pu='phpunit'
+alias rmr='rm -rf'
+alias sl='ls'
+alias ta='tmux -2 attach'
+alias tm='tmux -2'
+alias tt='tmux -2'
+alias bd='date +%d%m%Y'
 
 function mdcd() {
     mkdir "$@"
