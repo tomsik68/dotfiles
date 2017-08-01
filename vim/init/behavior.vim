@@ -17,3 +17,6 @@ set modeline
 set nobackup
 set noswapfile
 set nowritebackup
+
+set path+=**
+set wildmenu
