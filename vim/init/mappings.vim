@@ -2,8 +2,8 @@ let mapleader=';'
 
 nmap <leader>d :NERDTreeToggle<CR>
 " vertical & horizontal split
-nmap <leader>/ <C-w>v
-nmap <leader>- <C-w>s
+nmap <leader>/ :vsp.<CR>
+nmap <leader>- :sp.<CR>
 nmap <leader>w <C-w>w
 " fuzzy find file quickly
 nmap <leader>f :find 
