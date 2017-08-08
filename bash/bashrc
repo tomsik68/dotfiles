@@ -5,62 +5,9 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# powerline
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-. /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
-export PS1=""
+parent_path="`readlink -nf $BASH_SOURCE`"
+parent_path=${parent_path%/*}
 
-# utilities
-alias ..='cd ..'
-alias vim=nvim
-alias e='vim'
-alias :e='vim'
-alias E='vim +:E'
-alias :E='vim +:E'
-alias ZZ='exit'
-alias ZQ='exit'
-alias c='clear && ls'
-alias cal='cal -Ym'
-alias d='cd'
-alias g='git'
-alias l='ls'
-alias lesla='ls -hla | less'
-alias ls='ls --color=auto'
-alias lsg='ls | grep'
-alias m='make -j16'
-alias mle='make 2>&1 | less'
-alias pu='phpunit'
-alias rmr='rm -rf'
-alias sl='ls'
-alias ta='tmux -2 attach'
-alias tm='tmux -2'
-alias tt='tmux -2'
-alias bd='date +%d%m%Y'
-
-function mdcd() {
-    mkdir "$@"
-    cd "$@"
-}
-function swap()         
-{
-    local TMPFILE=tmp.$$
-    mv "$1" $TMPFILE
-    mv "$2" "$1"
-    mv $TMPFILE "$2"
-}
-
-# useful programs
-alias minecraft='java -jar ~/Downloads/Minecraft.jar'
-alias tracker="/opt/tracker/tracker.sh"
-export EDITOR=$(which nvim)
-export CXX=$(which g++)
-
-# path to rubygems
-export PATH=$PATH:~/.gem/ruby/2.4.0/bin:~/dotfiles/scripts
-export TERM=screen-256color
-export PANEL_FIFO="/tmp/panel-fifo"
-
-. /usr/share/z/z.sh
-eval $(keychain --eval --quiet --confhost)
+for file in `ls $parent_path/bashrc.d/*.sh`; do
+    source $file
+done
