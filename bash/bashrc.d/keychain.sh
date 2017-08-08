@@ -1,3 +1,3 @@
 #!/bin/bash
 
-eval $(keychain --eval --quiet --confhost)
+which keychain 2>&1 > /dev/null && eval $(keychain --eval --quiet --confhost)
