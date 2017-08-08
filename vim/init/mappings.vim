@@ -27,6 +27,8 @@ nmap <leader>a: :Tab /:<cr>
 " history
 nmap <leader>h :GundoToggle<cr>
 
+nmap <leader>\ :let @/=""<cr>
+
 " show syntax stack
 nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
