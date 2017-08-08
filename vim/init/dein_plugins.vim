@@ -6,7 +6,7 @@ set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state(expand('~/.local/share/dein'))
     call dein#begin(expand('~/.local/share/dein'))
     call dein#add(expand('~/.local/share/dein/repos/github.com/Shougo/dein.vim'))
-    call dein#add('Shougo/neocomplete.vim')
+    call dein#add('Shougo/deoplete.nvim')
     call dein#add('vim-scripts/marvim')
     call dein#add('neomake/neomake')
     call dein#add('SirVer/ultisnips')
@@ -42,3 +42,6 @@ endif
 if dein#check_install()
     call dein#install()
 endif
+
+" deoplete trying to be special
+call deoplete#enable()

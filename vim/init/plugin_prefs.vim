@@ -49,4 +49,6 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
+let g:deoplete#auto_complete_start_length=3
+
 let g:ackprg='ag --nogroup --nocolor --column'
