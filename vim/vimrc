@@ -12,3 +12,4 @@ source ~/dotfiles/vim/init/mappings.vim
 source ~/dotfiles/vim/init/commands.vim
 source ~/dotfiles/vim/init/prefs.vim
 source ~/dotfiles/vim/init/behavior.vim
+source ~/dotfiles/vim/init/statusline.vim
