@@ -14,7 +14,7 @@ nmap <leader><leader> :w<cr>
 " ...even without right permissions...
 nmap <leader>s :w !sudo tee %<cr>
 " C/C++: run make
-nmap <leader>m :make<cr>
+nmap <leader>m :Neomake!<cr>
 " next/previous (compilation) error
 nmap <leader>n :cn<cr>
 nmap <leader>N :cp<cr>
@@ -28,6 +28,7 @@ nmap <leader>a: :Tab /:<cr>
 " history
 nmap <leader>h :GundoToggle<cr>
 
+" clear search pattern
 nmap <leader>\ :let @/=""<cr>
 
 " show syntax stack
