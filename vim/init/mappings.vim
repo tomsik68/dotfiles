@@ -6,7 +6,8 @@ nmap <leader>/ :vsp.<CR>
 nmap <leader>- :sp.<CR>
 nmap <leader>w <C-w>w
 " fuzzy find file quickly
-nmap <leader>f :find 
+nmap <leader>f :call Fuzzy(":e")<CR>
+nmap <leader>t "kyiw:call FzyCommand("find . -type f -name '*" . @k . "*'", ":e")<CR>
 " save file quickly
 nmap <leader>q :wq<cr>
 nmap <leader><leader> :w<cr>
