@@ -13,17 +13,19 @@
     ai = add -i
     co = checkout
     cob = checkout -b
+    cop = checkout -p
     cl = clone
-    s = status
     st = status
     br = branch
-    c = commit
+    c = commit -s
     cs = commit -s
     gud = push
     ll = pull
     lo = log --oneline
     rb = rebase
     rs = reset
+    sh = stash
+    shp = stash -p
 [url "https://aur.archlinux.org/"]
     insteadOf = "aur:"
 [url "ssh+git://aur4.archlinux.org/"]
