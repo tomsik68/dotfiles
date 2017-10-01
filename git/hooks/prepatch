@@ -1,0 +1,9 @@
+#!/bin/bash
+# This script is meant to be used as a git pre-commit hook.
+# If any file contains "COMMIT:", it returns 1 as exit code thus preventing you from commiting the code
+
+if ag "COMMIT:" .; then
+    return 1
+else
+    return 0
+fi

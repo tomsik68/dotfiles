@@ -1,0 +1,7 @@
+#!/bin/bash
+# git prepare-commit-msg hook
+# adds all lines of `git diff --staged` to the commit message buffer, but commented.
+# It is handy for answering the question "What did I change in the last commit, again?" at the time of writing the commit message...
+
+echo "# git diff --staged: " >> $1
+git diff --staged | sed 's/^/# /g' | tee -a $1 >> /dev/null
