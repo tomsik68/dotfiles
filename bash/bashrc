@@ -9,5 +9,6 @@ parent_path="`readlink -nf $BASH_SOURCE`"
 parent_path=${parent_path%/*}
 
 for file in `ls $parent_path/bashrc.d/*.sh`; do
-    . $file 2>&1 >/dev/null
+    . $file
 done
+c
