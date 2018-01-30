@@ -19,3 +19,6 @@ set laststatus=2
 
 " show line numbers
 set number
+
+" show trailing whitespace
+match ErrorMsg '\s\+$'
