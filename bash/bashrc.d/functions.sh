@@ -3,7 +3,7 @@
 function mdcd()
 {
     mkdir "$@"
-    cd "$@"
+    d "$@"
 }
 
 function swap()
@@ -16,7 +16,7 @@ function swap()
 
 function d()
 {
-    cd $1
+    cd $@
     c
 }
 
