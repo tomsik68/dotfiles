@@ -1,5 +1,14 @@
 * Inspiration
   My emacs configuration is heavily inspired by Harry Schwartz. Thank you for sharing your ideas, Harry!
+* Emacs Multiplexing
+
+  Start an emacs server unless it is already running
+#+BEGIN_SRC emacs-lisp
+  (require 'server)
+  (unless (server-running-p)
+    (server-start))
+#+END_SRC
+
 * Package management
   Use package.el to manage packages
   #+BEGIN_SRC emacs-lisp
@@ -15,16 +24,19 @@
     Add melpa to software sources
     #+BEGIN_SRC emacs-lisp
 (add-to-list 'package-archives
-			  '("melpa" . "https://melpa.org/packages/") t)
+              '("melpa" . "https://melpa.org/packages/") t)
     #+END_SRC
+*** Marmalade
+    #+BEGIN_SRC emacs-lisp
+      (add-to-list 'package-archives '("marmalade" . "https://marmalade-repo.org/packages/"))
+    #+END_SRC
+
 ** Define package list
-   Initialize package
    #+BEGIN_SRC emacs-lisp
      (package-initialize)
      (defvar my-packages
        '(
          interleave
-         evil
          haskell-mode
          ghci-completion
          haskell-mode
@@ -33,34 +45,59 @@
          multiple-cursors
          graphviz-dot-mode
          wolfram
-                        ))
+         color-theme
+         rainbow-delimiters
+         elscreen
+         yasnippet
+         projectile
+         fzf
+         org-bullets
+         company
+         irony
+         company-irony
+         monokai-theme
+         cmake-mode
+         graphviz-dot-mode
+         gnuplot-mode
+         autodisass-llvm-bitcode
+         color-theme-buffer-local
+     ))
    #+END_SRC
 
 ** Refresh package sources
-   #+BEGIN_SRC
-(package-initialize)
-
-(unless package-archive-contents (package-refresh-contents))
+   #+BEGIN_SRC emacs-lisp
+(package-refresh-contents)
    #+END_SRC
+
 *** Install packages that are not already installed
-    #+BEGIN_SRC emacs-lisp
-(dolist (package my-packages)
-    (unless (package-installed-p package)
-      (package-install package)))
-    #+END_SRC
     
-* Appearance
-  
-** Color Theme
-   Tango-dark is good enough for now
-   #+BEGIN_SRC emacs-lisp
-   (load-theme 'tango-dark)
-   #+END_SRC
-** Disable menubar & toolbar
+    #+BEGIN_SRC emacs-lisp
+      (dolist (package my-packages)
+          (unless (package-installed-p package)
+            (package-install package)))
+    #+END_SRC
 
+* Appearance
+** Color Theme
+Choose leuven as default color theme
    #+BEGIN_SRC emacs-lisp
-(menu-bar-mode -1)
-(tool-bar-mode -1)
+;;     (load-theme 'leuven t)
+   #+END_SRC
+
+   #+RESULTS:
+
+** Disable menubar, toolbar & scrollbar
+   
+   #+BEGIN_SRC emacs-lisp
+     (menu-bar-mode -1)
+     (tool-bar-mode -1)
+     (scroll-bar-mode -1)
+   #+END_SRC
+   
+** Disable welcome screen
+   
+   #+BEGIN_SRC emacs-lisp
+     (setq inhibit-startup-message t)
    #+END_SRC
    
 ** Show line numbers
@@ -68,41 +105,269 @@
    #+BEGIN_SRC emacs-lisp
    (add-hook 'prog-mode-hook 'linum-mode)
    #+END_SRC
+   
+** Maximum decoration
+   #+BEGIN_SRC emacs-lisp
+     (setq font-lock-maximum-decoration t)
+   #+END_SRC
+   
+** PDF resolution
+   #+BEGIN_SRC emacs-lisp
+     (setq doc-view-resolution 300)   
+     (setq doc-view-continuous t)
+   #+END_SRC
 
 * Editing
-  
+** General
+*** Delete whole line
+#+BEGIN_SRC emacs-lisp
+  (defun my/kill-line-from-begin ()
+    "Kill current line independent of position. 
+  Mimics vim's dd, except it doesn't preserve cursor column"
+    (interactive)
+    (move-beginning-of-line nil)
+    (kill-line)
+    ; call this twice so there are no blank lines left
+    (delete-blank-lines)
+    (delete-blank-lines)
+    )
+  (add-hook 'text-mode-hook
+            (lambda ()
+              (define-key text-mode-map (kbd "C-S-k") 'my/kill-line-from-begin)
+              )
+            )
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (define-key prog-mode-map (kbd "C-S-k") 'my/kill-line-from-begin)
+              )
+            )
+#+END_SRC
+*** Insert new line above
+#+BEGIN_SRC emacs-lisp
+  (defun my/newline-up ()
+    "Insert a new line above current one, indent it and move to the beginning.
+  Mimics vim's O."
+    (interactive)
+    (move-beginning-of-line nil)
+    (newline-and-indent)
+    (previous-line)
+    )
+    (add-hook 'text-mode-hook
+              (lambda ()
+                (define-key text-mode-map (kbd "C-S-o") 'my/newline-up)
+                )
+              )
+    (add-hook 'prog-mode-hook
+              (lambda ()
+                (define-key prog-mode-map (kbd "C-S-o") 'my/newline-up)
+                )
+              )
+#+END_SRC
+*** Insert new line below
+#+BEGIN_SRC emacs-lisp
+  (defun my/newline-down ()
+    "Insert a new line below current one, indent it and move to the beginning.
+  Mimics vim's o."
+    (interactive)
+    (move-end-of-line nil)
+    (newline-and-indent)
+    )
+
+    (add-hook 'text-mode-hook
+              (lambda ()
+                (define-key text-mode-map (kbd "C-o") 'my/newline-down)
+                )
+              )
+    (add-hook 'prog-mode-hook
+              (lambda ()
+                (define-key prog-mode-map (kbd "C-o") 'my/newline-down)
+                )
+              )
+#+END_SRC
+*** Scrolling
+#+BEGIN_SRC emacs-lisp
+;  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+;  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+;  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  (setq scroll-step 1)
+#+END_SRC
 ** Org-mode
-   
-   
 *** Disable code execution confirm
     #+BEGIN_SRC emacs-lisp
 (setq org-confirm-babel-evaluate nil)
     #+END_SRC
 *** Load org-babel languages
-
-    Load lisp, python and calc
+ 
     #+BEGIN_SRC emacs-lisp
-      (org-babel-do-load-languages
-         'org-babel-load-languages
-          '(
-            (emacs-lisp . t)
-            (python . t)
-            (calc . t)
-            (latex . t)
-            (haskell . t)
-            (dot . t)
-            ))
+            (org-babel-do-load-languages
+               'org-babel-load-languages
+                '(
+                  (emacs-lisp . t)
+                  (sh . t)
+                  (python . t)
+                  (calc . t)
+                  (latex . t)
+                  (haskell . t)
+                  (dot . t)
+                  (gnuplot . t)
+                  ))
     #+END_SRC
-
+    
 *** Display LaTeX entities as UTF-8 in org-mode
     #+BEGIN_SRC emacs-lisp
-(add-hook 'org-mode-hook 'org-toggle-pretty-entities)
+      (add-hook 'org-mode-hook 'org-toggle-pretty-entities)
+    #+END_SRC
+    
+*** Use syntax highlighting in source code blocks
+    #+BEGIN_SRC emacs-lisp
+      (setq org-src-fontify-natively t)
+    #+END_SRC
+    
+*** LaTeX document classes
+**** Fithesis
+    #+BEGIN_SRC emacs-lisp
+      (with-eval-after-load 'ox-latex
+        (add-to-list 'org-latex-classes
+                     '("fithesis"
+                       "\\documentclass{fithesis3}"
+                       ("\\chapter{%s}" . "\\chapter*{%s}")
+                       ("\\section{%s}" . "\\section*{%s}")
+                       ("\\subsection{%s}" . "\\subsection*{%s}")
+                       ("\\subsubsection{%s}" . "\\subsubsection*{%s}"))))
+    #+END_SRC
+    
+*** Org Agenda
+Fetch agenda files list from different file,
+Use =C-c a= to open agenda
+#+BEGIN_SRC emacs-lisp
+  (setq org-agenda-files (expand-file-name "~/.emacs.d/agenda"))
+  (global-set-key "\C-ca" 'org-agenda)
+#+END_SRC
+*** Org Capture
+#+BEGIN_SRC emacs-lisp
+
+    (global-set-key "\C-cc" 'org-capture)
+    (setq org-capture-templates
+          '(("s" "Skola Todo" entry (file+headline "~/Private/journal/skola.org" "Tasks")
+             "* TODO %?\n  %i\n  %a")
+            ("l" "Log" entry (file+olp+datetree "~/Private/journal/log.org")
+             "* %?\nEntered on %U\n  %i\n  %a")
+            ("p" "Programming" entry (file+headline "~/Private/journal/programming.org")
+             "* %?\n%i\n%a")
+  )
+          )
+#+END_SRC
+*** Org plot
+    #+BEGIN_SRC emacs-lisp
+      (add-hook 'org-mode-hook (lambda ()
+                                 (define-key org-mode-map (kbd "C-M-g") 'org-plot/gnuplot)
+                                 ) )
     #+END_SRC
 
-** Use eVIl
-   Use eVIl mode when editing text or when programming
+** Use yasnip
    #+BEGIN_SRC emacs-lisp
-(add-hook 'text-mode-hook 'evil-mode)
-(add-hook 'prog-mode-hook 'evil-mode)
+     (require 'yasnippet)
+     (yas-reload-all)
+     (add-hook 'prog-mode-hook 'yas-minor-mode)
+   #+END_SRC
+   
+** Tabs
+   #+BEGIN_SRC emacs-lisp
+     (setq indent-tabs-mode nil)
+     (setq tab-width 4)
+   #+END_SRC
+   
+** AUCTeX
+#+BEGIN_SRC emacs-lisp
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+#+END_SRC
+** RefTeX
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+#+END_SRC
+** LaTeXMk
+   #+BEGIN_SRC emacs-lisp
+        (auctex-latexmk-setup)
+   #+END_SRC
+* Viewing
+** doc-view-mode
+*** automatically revert any changes in doc-view buffers
+this makes it possible to update PDFs without constantly typing =yes=
+#+BEGIN_SRC emacs-lisp
+(add-hook 'doc-view-mode-hook 'auto-revert-mode)
+#+END_SRC
+
+* Programming
+** General
+*** Hide-Show mode
+this allows collapsing code blocks using e.g. C-c @ C-c
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'prog-mode-hook 'hs-minor-mode)
+  (add-hook 'prog-mode-hook 'company-mode)
+#+END_SRC
+*** Highlight brackets
+Highlight closing bracket for each opening one.
+Rainbow delimiters mode also looks great!
+
+   #+BEGIN_SRC emacs-lisp
+     (add-hook 'prog-mode-hook 'show-paren-mode)
+     (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+   #+END_SRC
+*** Multiple Cursors mode
+Use multiple cursors, bind to =C-c m=.
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'prog-mode-hook
+            (lambda()
+              (multiple-cursors-mode)
+              (define-key prog-mode-map (kbd "C-c m") 'mc/edit-lines)
+              ))
+#+END_SRC
+** Haskell
+*** Use intero-mode in haskell
+    #+BEGIN_SRC emacs-lisp
+(add-hook 'haskell-mode-hook 'intero-mode)
+    #+END_SRC
+    
+** C++
+#+BEGIN_SRC emacs-lisp
+  (setq c-default-style "stroustrup"
+        c-basic-offset 4)
+  (eval-after-load 'company
+    '(add-to-list 'company-backends 'company-irony))
+#+END_SRC
+* Git
+** Global keybind
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x g") 'magit-dispatch-popup)
+#+END_SRC
+
+* Recent Files
+  #+BEGIN_SRC emacs-lisp
+    (recentf-mode 1)
+    (setq recentf-max-menu-items 25)
+    (global-set-key "\C-x\ \C-r" 'recentf-open-files)
+  #+END_SRC
+
+* Auto Backups
+** Backup & Auto-Save
+   disable backup & auto-save
+   
+   #+BEGIN_SRC emacs-lisp
+     (setq backup-inhibited t)
+     (setq auto-save-default nil)
+   #+END_SRC
+   
+* Custom Addons
+** Make Mode
+   #+BEGIN_SRC emacs-lisp
+     (load-file "~/.emacs.d/custom/cpp.el")
+   #+END_SRC
+   
+** Cuda Mode
+   #+BEGIN_SRC emacs-lisp
+     (load-file "~/.emacs.d/custom/cuda-mode.el")
    #+END_SRC
    
