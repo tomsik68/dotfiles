@@ -21,3 +21,8 @@ set nowritebackup
 
 set path+=**
 set wildmenu
+
+" sane line joins on comments
+if v:version > 703 || v:version == 703 && has('patch541')
+  set formatoptions+=j
+endif
