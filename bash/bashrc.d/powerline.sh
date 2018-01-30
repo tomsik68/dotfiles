@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if which powerline-daemon 2>&1 > /dev/null; then
+if false && which powerline-daemon 2>&1 > /dev/null; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
