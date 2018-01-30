@@ -14,9 +14,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetsDir = "~/dotfiles/vim/ultisnips-snippets"
 
-" Clang
-let g:clang_library_path='/usr/lib64/libclang.so.3.8'
-
 " LaTeX live preview
 let g:livepreview_previewer='evince'
 
@@ -52,3 +49,11 @@ au Syntax * RainbowParenthesesLoadBraces
 let g:deoplete#auto_complete_start_length=3
 
 let g:ackprg='ag --nogroup --nocolor --column'
+
+let g:neomake_make_maker = {
+\ 'exe': 'make',
+\ 'args': ['-j8'],
+\ 'errorformat': '%f:%l:%c: %m',
+\ }
+
+let g:neomake_enabled_makers = ['make']

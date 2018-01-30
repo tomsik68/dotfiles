@@ -1,20 +1,20 @@
 let mapleader=';'
 
-nmap <leader>d :NERDTreeToggle<CR>
 " vertical & horizontal split
 nmap <leader>/ :vsp.<CR>
 nmap <leader>- :sp.<CR>
 nmap <leader>w <C-w>w
 " fuzzy find file quickly
-nmap <leader>f :call Fuzzy(":e")<CR>
-nmap <leader>t "kyiw:call FzyCommand("find . -type f -name '*" . @k . "*'", ":e")<CR>
+nmap <leader>f :FuzzyOpen<CR>
+nmap <leader>g :FuzzyGrep<CR>
+" delete buffer without closing vim
+nmap <leader>q :Bdelete<cr>
 " save file quickly
-nmap <leader>q :wq<cr>
 nmap <leader><leader> :w<cr>
 " ...even without right permissions...
 nmap <leader>s :w !sudo tee %<cr>
-" C/C++: run make
-nmap <leader>m :Neomake!<cr>
+" run maker for current directory
+nmap <leader>m :Neomake<cr>
 " next/previous (compilation) error
 nmap <leader>n :cn<cr>
 nmap <leader>N :cp<cr>
@@ -25,11 +25,11 @@ nmap <leader>c :ClangFormat<cr>
 nmap <leader>a= :Tab /=<cr>
 nmap <leader>a: :Tab /:<cr>
 
-" history
-nmap <leader>h :GundoToggle<cr>
-
 " clear search pattern
 nmap <leader>\ :let @/=""<cr>
+
+nmap <leader>ga <Plug>(place-insert)
+nmap <leader>gb <Plug>(place-insert-multiple)
 
 " show syntax stack
 nmap <C-S-P> :call <SID>SynStack()<CR>

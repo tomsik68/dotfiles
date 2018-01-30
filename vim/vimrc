@@ -5,7 +5,6 @@ filetype plugin on
 
 source ~/dotfiles/vim/init/dein_plugins.vim
 source ~/dotfiles/vim/init/plugin_prefs.vim
-source ~/dotfiles/vim/init/fzy.vim
 
 source ~/dotfiles/vim/init/appearance.vim
 source ~/dotfiles/vim/init/mappings.vim
