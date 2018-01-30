@@ -5,7 +5,6 @@ if has("autocmd")
                                 \ if line("'\"") > 1 && line("'\"") <= line("$") |
                                 \   exe "normal! g`\"" |
                                 \ endif
-        autocmd User NeomakeJobFinished copen
 endif
 
 " execure project-specific vim files, but securely

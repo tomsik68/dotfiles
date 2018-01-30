@@ -57,3 +57,4 @@ let g:neomake_make_maker = {
 \ }
 
 let g:neomake_enabled_makers = ['make']
+let g:neomake_open_list = 2

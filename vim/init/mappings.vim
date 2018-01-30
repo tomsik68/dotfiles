@@ -16,8 +16,8 @@ nmap <leader>s :w !sudo tee %<cr>
 " run maker for current directory
 nmap <leader>m :Neomake<cr>
 " next/previous (compilation) error
-nmap <leader>n :cn<cr>
-nmap <leader>N :cp<cr>
+nmap <leader>n :lnext<cr>
+nmap <leader>N :lprev<cr>
 " CLang format
 nmap <leader>c :ClangFormat<cr>
 
