@@ -8,9 +8,9 @@ endfunction
 function! BuildStatus()
     let l = len(neomake#GetJobs())
     let t = strftime('%s')
-    let indicators = ['|', '/', '-', '\', '|', '/', '-', '\']
+    let indicators = ['|', '/', '-', '\']
     if l == 0
-        return 'X'
+        return '✓'
     else
         return indicators[s:mod(t, len(indicators))]
     endif
@@ -18,7 +18,8 @@ endfunction
 
 set statusline=
 " external builder status
-set statusline+=%{BuildStatus()}\ 
+set statusline+=\ %{BuildStatus()}\ 
+set statusline+=%{neomake#statusline#QflistStatus()}\ 
 " git info
 set statusline+=%{fugitive#statusline()}\ 
 " information about current file
