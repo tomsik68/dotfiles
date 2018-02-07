@@ -7,6 +7,7 @@ source ~/dotfiles/vim/init/dein_plugins.vim
 source ~/dotfiles/vim/init/plugin_prefs.vim
 
 source ~/dotfiles/vim/init/appearance.vim
+source ~/dotfiles/vim/init/autocmd.vim
 source ~/dotfiles/vim/init/mappings.vim
 source ~/dotfiles/vim/init/commands.vim
 source ~/dotfiles/vim/init/prefs.vim
