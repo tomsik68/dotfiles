@@ -20,6 +20,11 @@ bk_mv .vimrc
 bk_ln .config/nvim nvim
 bk_ln .config/bspwm bspwm
 bk_ln .gitconfig git/gitconfig
+bk_ln .config/i3 i3
 [ -d ~/.emacs.d ] || mkdir ~/.emacs.d
 bk_ln .emacs.d/init.el emacs.d/init.el
 bk_ln .emacs.d/configuration.org emacs.d/configuration.org
+
+cd scripts
+git clone https://github.com/tomsik68/captain-hook.git
+cd ..
