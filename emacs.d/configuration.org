@@ -305,6 +305,42 @@ this makes it possible to update PDFs without constantly typing =yes=
 (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 #+END_SRC
 
+* Publishing
+
+#+BEGIN_SRC emacs-lisp
+(setq org-export-htmlize-output-type 'css)
+#+END_SRC
+** Projects list
+
+#+BEGIN_SRC emacs-lisp
+  (require 'ox-publish)
+  ;  (require 'org-publish)
+    (setq org-publish-project-alist
+          '(
+            ;; ... add all the components here (see below)...
+            ("www-notes"
+             :base-directory "~/public/new_www/org/"
+             :base-extension "org"
+             :publishing-directory "~/public/new_www/html"
+             :recursive t
+             :publishing-function org-html-publish-to-html
+             :headline-levels 4             ; Just the default for this project.
+             :auto-preamble t
+             :html-head "<link rel='stylesheet' type='text/css' href='style/worg.css' />"
+             :auto-sitemap t                ; Generate sitemap.org automagically...
+             :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
+             :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
+             )
+            ("www-static"
+             :base-directory "~/public/new_www/org"
+             :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+             :publishing-directory "~/public/new_www/html/"
+             :recursive t
+             :publishing-function org-publish-attachment
+             )
+            ("www" :components ("www-notes" "www-static"))
+            ))
+#+END_SRC
 * Programming
 ** General
 *** Hide-Show mode
