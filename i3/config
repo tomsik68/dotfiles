@@ -161,6 +161,3 @@ bar {
     position top
 }
 new_window none
-
-gaps outer 5
-gaps inner 5
