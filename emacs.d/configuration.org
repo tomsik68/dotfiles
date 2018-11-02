@@ -293,6 +293,11 @@ Use =C-c a= to open agenda
         (auctex-latexmk-setup)
    #+END_SRC
 * Viewing
+** pdf-tools
+#+BEGIN_SRC emacs-lisp
+  (pdf-tools-install)
+#+END_SRC
+
 ** doc-view-mode
 *** automatically revert any changes in doc-view buffers
 this makes it possible to update PDFs without constantly typing =yes=
