@@ -21,13 +21,16 @@
     cs = commit -s
     gud = push
     ll = pull
-    lo = log --oneline
+    l  = log --oneline
+    ld = log -c --oneline --notes
     rb = rebase
     rs = reset
     sh = stash
     shl = stash list
     shp = stash -p
     shs = stash show -p
+    shki = stash save --keep-index
+    tr = log --oneline --decorate --all --graph
 [url "https://aur.archlinux.org/"]
     insteadOf = "aur:"
 [url "ssh+git://aur4.archlinux.org/"]
