@@ -1,6 +1,7 @@
 " restore cursor position in files
 if has("autocmd")
-        filetype plugin indent on
+        filetype plugin on
+        filetype indent off
         autocmd BufReadPost *
                                 \ if line("'\"") > 1 && line("'\"") <= line("$") |
                                 \   exe "normal! g`\"" |
@@ -9,9 +10,6 @@ endif
 
 " execure project-specific vim files, but securely
 set exrc secure
-
-" enable modelines
-set modeline
 
 " get rid of swp and backup files
 set nobackup

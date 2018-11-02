@@ -1,7 +1,6 @@
 let mapleader=';'
 
-" vertical & horizontal split
-nmap <leader>/ :vsp.<CR>
+" vertical & horizontal split nmap <leader>/ :vsp.<CR>
 nmap <leader>- :sp.<CR>
 nmap <leader>w <C-w>w
 " fuzzy find file quickly
@@ -13,6 +12,8 @@ nmap <leader>q :Bdelete<cr>
 nmap <leader><leader> :w<cr>
 " ...even without right permissions...
 nmap <leader>s :w !sudo tee %<cr>
+" fix empty lines and trailing whitespaces
+nmap <leader>x my:%s/^\s\+$//ge<cr>:%s/\s\+$//ge<cr>'y
 " run maker for current directory
 nmap <leader>m :Neomake<cr>
 " next/previous (compilation) error
@@ -28,13 +29,10 @@ nmap <leader>a: :Tab /:<cr>
 " clear search pattern
 nmap <leader>\ :let @/=""<cr>
 
-nmap <leader>ga <Plug>(place-insert)
-nmap <leader>gb <Plug>(place-insert-multiple)
-
 " show syntax stack
 nmap <C-S-P> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
-        if exists("*synstack")
-                echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-        endif
+    if exists("*synstack")
+        echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+    endif
 endfunc

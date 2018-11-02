@@ -58,3 +58,6 @@ let g:neomake_make_maker = {
 
 let g:neomake_enabled_makers = ['make']
 let g:neomake_open_list = 2
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:vim_json_syntax_conceal = 0
