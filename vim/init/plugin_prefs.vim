@@ -6,13 +6,13 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 set rtp+=~/dotfiles/vim/ultisnips-snippets
 
 "Rooter
-let g:rooter_patterns = ['Makefile', 'build.gradle']
+let g:rooter_patterns = ['Makefile', 'build.gradle', '.git']
 
 " Ultisnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetsDir = "~/dotfiles/vim/ultisnips-snippets"
+"let g:UltiSnipsSnippetsDir = "~/dotfiles/vim/ultisnips-snippets"
 
 " LaTeX live preview
 let g:livepreview_previewer='evince'
@@ -61,3 +61,10 @@ let g:neomake_open_list = 2
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:vim_json_syntax_conceal = 0
+
+let g:rustfmt_autosave = 1
+
+let g:deoplete#sources#rust#racer_binary='/usr/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/var/local/rust'
+let g:python_host_prog='/usr/bin/python2'
+let g:python3_host_prog='/usr/bin/python3'

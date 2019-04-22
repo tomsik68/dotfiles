@@ -6,7 +6,8 @@ endfunction
 
 " get status of build
 function! BuildStatus()
-    let l = len(neomake#GetJobs())
+    "let l = len(neomake#GetJobs())
+    let l = 0
     let t = strftime('%s')
     let indicators = ['|', '/', '-', '\']
     if l == 0
@@ -19,9 +20,9 @@ endfunction
 set statusline=
 " external builder status
 set statusline+=\ %{BuildStatus()}\ 
-set statusline+=%{neomake#statusline#QflistStatus()}\ 
+"set statusline+=%{neomake#statusline#QflistStatus()}\ 
 " git info
-set statusline+=%{fugitive#statusline()}\ 
+set statusline+=[%{fugitive#head()}]\ 
 " information about current file
 set statusline+=%f\ %h%w%M%R\ %=
 " end of default statusline (with ruler)

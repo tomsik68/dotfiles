@@ -13,3 +13,4 @@ source ~/dotfiles/vim/init/mappings.vim
 source ~/dotfiles/vim/init/commands.vim
 source ~/dotfiles/vim/init/behavior.vim
 source ~/dotfiles/vim/init/statusline.vim
+source ~/dotfiles/vim/init/makeprg.vim

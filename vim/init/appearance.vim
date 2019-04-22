@@ -8,6 +8,7 @@ set wrap lbr nolist
 " enable syntax highlight
 syntax on
 " use crystallite as color scheme
+"colorscheme Crystallite
 colorscheme Crystallite
 " set font for GUI
 if has('gui_running')

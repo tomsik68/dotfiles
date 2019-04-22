@@ -5,13 +5,9 @@ set runtimepath+=~/.local/share/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand(dein_plugins_dir))
 call dein#add(expand('~/.local/share/dein/repos/github.com/Shougo/dein.vim'))
-if has('nvim')
-    call dein#add('Shougo/deoplete.nvim')
-else
-    call dein#add('Shougo/neocomplete.vim')
-endif
-
-call dein#add('neomake/neomake')
+call dein#add('Shougo/deoplete.nvim')
+call dein#add('zchee/deoplete-clang')
+call dein#add('sebastianmarkow/deoplete-rust')
 call dein#add('SirVer/ultisnips')
 call dein#add('honza/vim-snippets')
 call dein#add('tpope/vim-fugitive')
@@ -52,6 +48,8 @@ call dein#add('elzr/vim-json')
 call dein#add('rhysd/committia.vim')
 call dein#add('andymass/vim-matchup')
 call dein#add('AndrewRadev/linediff.vim')
+call dein#add('wlangstroth/vim-racket')
+call dein#add('w0rp/ale')
 call dein#end()
 call dein#save_state()
 
@@ -60,6 +58,4 @@ if dein#check_install()
 endif
 
 " deoplete trying to be special
-if has('nvim')
-    call deoplete#enable()
-endif
+let g:deoplete#enable_at_startup = 1
