@@ -1,0 +1,36 @@
+general {
+    colors = true
+    interval = 5
+}
+
+order += "wireless wlp3s0"
+order += "ethernet enp2s0"
+order += "battery 0"
+order += "tztime local"
+
+wireless wlp3s0 {
+    format_up = "WiFi: %essid, %ip"
+    format_down = ""
+}
+
+ethernet enp2s0 {
+    format_up = "eth: %ip %speed"
+    format_down = ""
+}
+
+battery 0 {
+    format = "%percentage (%remaining)"
+}
+
+disk "/home" {
+    format = "/home: %free"
+}
+
+tztime local {
+    format = "%time"
+    format_time = "%a %b %d, %H:%M"
+}
+
+run_watch DHCP {
+  pidfile = "/var/run/dhclient*.pid"
+}
