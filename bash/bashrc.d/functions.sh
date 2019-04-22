@@ -16,7 +16,7 @@ function swap()
 
 function d()
 {
-    cd $@
+    cd "$@"
     c
 }
 
@@ -24,4 +24,3 @@ function tomp3()
 {
     ffmpeg -i "$1" "${1%.*}.mp3"
 }
-

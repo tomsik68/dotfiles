@@ -7,5 +7,5 @@ if false && which powerline-daemon 2>&1 > /dev/null; then
     . /usr/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh
     export PS1=""
 else
-    export PS1="\[\033[38;5;11m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\]\w:\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]"
+    export PS1='$(echo "\[\033[38;5;1m\]\u\[$(tput sgr0)\]\[\033[38;5;12m\]@\h:\[$(tput sgr0)\]\[\033[38;5;6m\]\w:\[$(tput sgr0)\]\[\033[38;5;15m\]\n\[$(tput sgr0)\]" )'
 fi
