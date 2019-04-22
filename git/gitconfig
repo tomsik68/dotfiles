@@ -17,7 +17,7 @@
     cl = clone
     st = status
     br = branch
-    c = commit -s
+    c = commit
     cs = commit -s
     gud = push
     ll = pull
@@ -35,10 +35,11 @@
     insteadOf = "aur:"
 [url "ssh+git://aur4.archlinux.org/"]
     pushInsteadOf = "aur:"
-[url "https://github.com/"]
-    insteadOf = "gh:"
 [url "git@github.com:"]
+    insteadOf = "gh:"
     pushInsteadOf = "gh:"
 [url "git@gitlab_fi:"]
     insteadOf = "fi:"
     pushInsteadOf = "fi:"
+[gpg]
+	program = gpg2
