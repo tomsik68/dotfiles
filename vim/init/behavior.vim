@@ -8,6 +8,9 @@ if has("autocmd")
                                 \ endif
 endif
 
+" automatically change directory to directory of edited file
+set autochdir
+
 " execure project-specific vim files, but securely
 set exrc secure
 
