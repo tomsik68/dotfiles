@@ -1,6 +1,11 @@
 #!/bin/bash
 
 files=`git status --short | grep "^UU" | cut -d " " -f 2`
+if [[ $files == "" ]]; then
+  echo Nothing to resolve.
+  exit 0
+fi
+
 chosen=`echo $files | xargs -n1 | fzf --preview='git diff --color {} | head -n80'`
 
 if [[ $chosen != "" ]]; then
