@@ -9,7 +9,7 @@ if has("autocmd")
 endif
 
 " automatically change directory to directory of edited file
-set autochdir
+"set autochdir
 
 " execure project-specific vim files, but securely
 set exrc secure
@@ -21,6 +21,10 @@ set nowritebackup
 
 set path+=**
 set wildmenu
+set browsedir=buffer
+
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
 
 " sane line joins on comments
 if v:version > 703 || v:version == 703 && has('patch541')

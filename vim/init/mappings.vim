@@ -17,8 +17,8 @@ nmap <leader>x my:%s/^\s\+$//ge<cr>:%s/\s\+$//ge<cr>'y
 " run maker for current directory
 nmap <leader>m :make<cr>
 " next/previous (compilation) error
-nmap <leader>n :lnext<cr>
-nmap <leader>N :lprev<cr>
+nmap <leader>n :cnext<cr>
+nmap <leader>N :cprev<cr>
 " CLang format
 nmap <leader>c :ClangFormat<cr>
 
