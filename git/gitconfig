@@ -4,6 +4,7 @@
 [core]
 	fileMode = false
 	autocrlf = false
+    editor = vim
 [alias]
     ds = diff --staged
     d = diff
