@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 [left|right]"
+  echo "The argument is position of external monitor relative to built-in"
+  exit 1
+fi
+
+pos=$1
+
+xrandr --output eDP-1 --auto --output DP-1 --auto --$pos-of eDP-1
