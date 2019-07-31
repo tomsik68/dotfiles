@@ -39,7 +39,7 @@ bindsym $mod+Shift+c kill
 bindsym $mod+r exec rofi -modi run -show
 
 bindsym $mod+c sticky toggle
-bindsym $mod+p exec passmenu
+bindsym $mod+p exec passrofi
 bindsym $mod+b exec ~/dotfiles/scripts/mpvclip
 bindsym Ctrl+$mod+e exec emacsclient -nc
 bindsym Ctrl+$mod+f exec firefox
