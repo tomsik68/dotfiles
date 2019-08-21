@@ -1,5 +1,6 @@
 #!/usr/bin/fish
 
+set PATH $PATH $DEVKITPRO/tools/bin
 set PATH $PATH ~/dotfiles/scripts
 set PATH $PATH ~/.cargo/bin
 set PATH $PATH ~/go/bin
