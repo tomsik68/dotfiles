@@ -1,0 +1,12 @@
+#!/bin/bash
+
+pidfile="/var/run/user/$(id -u)/musicplayer"
+song=$HOME/music/$(fd -t f . ~/music | sed s":$HOME/music/::g" | rofi -matching fuzzy -dmenu -i -tokenize -p "play" | tr -d '\n')
+
+if [ -f $pidfile ]; then
+  kill -9 $(cat $pidfile)
+fi
+
+mpv "$song" &
+pid="$!"
+echo $pid > $pidfile
