@@ -1,0 +1,33 @@
+#!/bin/bash
+
+echo "Starting backup..."
+echo ""
+
+key="0xCA1D3571B1934B34"
+
+# make sure we have the key locally
+echo "Ensuring presence of encryption key:"
+echo ""
+gpg --recv-keys $key
+echo ""
+
+folder="`pwd`/$1"
+outdir="`mktemp -d`"
+
+cd $outdir
+foldername="`basename $folder`"
+# 1. compress the folder into a tgz
+echo "tar czf $folder"
+tar czf $foldername.tgz $folder
+# 2. encrypt the tgz with a key
+echo "gpg encrypt $foldername.tgz"
+gpg --output $foldername.tgz.gpg --encrypt --recipient $key $foldername.tgz
+# 3. get rid of original backup to save space
+echo "rm $foldername.tgz"
+rm $foldername.tgz
+echo ""
+
+echo "Backup done to $outdir"
+echo "Press enter to delete it."
+read
+rm -rf $outdir
