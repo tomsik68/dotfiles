@@ -7,6 +7,6 @@ if [ -f $pidfile ]; then
   kill -9 $(cat $pidfile)
 fi
 
-mpv "$song" &
+mpv --no-video "$song" &
 pid="$!"
 echo $pid > $pidfile
