@@ -1,0 +1,19 @@
+#!/bin/sh
+
+block_timetrap() {
+  echo "{ \"name\":\"timetrap\", \"full_text\":\"" $(~/.gem/ruby/2.6.0/bin/timetrap now 2>&1) "\"}"
+}
+
+i3status | {
+  read VERSION
+  echo $VERSION
+  read START
+  echo $START
+  while :
+  do
+    LINE=$(head -n 1 | sed s/^,//)
+    BLOCKS="$(block_timetrap)"
+    echo $LINE | jq -c ". |= [$BLOCKS] + ."
+    echo ,
+  done
+}
