@@ -39,5 +39,6 @@ alias tm='tmux -2'
 alias tracker='/opt/tracker/tracker.sh'
 alias tt='tmux -2'
 alias xsel='xsel -b'
+alias reshacker='wine ~/.wine/drive_c/Program\ Files\ \(x86\)/Resource\ Hacker/ResourceHacker.exe'
 
 which nvim >/dev/null && alias vim='nvim'
