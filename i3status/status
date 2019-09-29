@@ -4,6 +4,16 @@ block_timetrap() {
   echo "{ \"name\":\"timetrap\", \"full_text\":\"" $(~/.gem/ruby/2.6.0/bin/timetrap now 2>&1) "\"}"
 }
 
+block_online() {
+  onlinestatus=$(ping -c 1 1.1.1.1 | grep -o -E '([0-9]+%) packet loss' | sed s'/% packet loss//g')
+  if [[ $onlinestatus == "100" ]]; then
+    onlinestatus="offline"
+  else
+    onlinestatus="online"
+  fi
+  echo "{ \"name\":\"online\", \"full_text\":\"" $onlinestatus "\"}"
+}
+
 i3status | {
   read VERSION
   echo $VERSION
@@ -12,7 +22,7 @@ i3status | {
   while :
   do
     LINE=$(head -n 1 | sed s/^,//)
-    BLOCKS="$(block_timetrap)"
+    BLOCKS="$(block_timetrap), $(block_online)"
     echo $LINE | jq -c ". |= [$BLOCKS] + ."
     echo ,
   done
