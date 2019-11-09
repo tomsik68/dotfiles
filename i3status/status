@@ -10,7 +10,17 @@ block_online() {
   else
     onlinestatus="offline"
   fi
+
   echo "{ \"name\":\"online\", \"full_text\":\"" $onlinestatus "\"}"
+}
+
+block_dirtywr() {
+  busy="wr $(grep "Dirty:" /proc/meminfo | sed s'/Dirty://g')"
+  bdcount=$(ls /sys/block | wc -l)
+  if [ $bdcount -lt 3 ]; then
+    busy=""
+  fi
+  echo "{ \"name\":\"dirtywr\", \"full_text\":\"" $busy "\"}"
 }
 
 i3status | {
@@ -21,7 +31,7 @@ i3status | {
   while :
   do
     LINE=$(head -n 1 | sed s/^,//)
-    BLOCKS="$(block_timetrap), $(block_online)"
+    BLOCKS="$(block_dirtywr), $(block_online)"
     echo $LINE | jq -c ". |= [$BLOCKS] + ."
     echo ,
   done
