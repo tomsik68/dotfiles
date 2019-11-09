@@ -5,11 +5,10 @@ block_timetrap() {
 }
 
 block_online() {
-  onlinestatus=$(ping -c 1 1.1.1.1 | grep -o -E '([0-9]+%) packet loss' | sed s'/% packet loss//g')
-  if [[ $onlinestatus == "100" ]]; then
-    onlinestatus="offline"
+  if ping -w 1 -c 1 1.1.1.1 2>/dev/null >/dev/null; then
+    onlinestatus=" "
   else
-    onlinestatus="online"
+    onlinestatus="offline"
   fi
   echo "{ \"name\":\"online\", \"full_text\":\"" $onlinestatus "\"}"
 }
