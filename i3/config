@@ -51,6 +51,8 @@ bindsym XF86AudioPlay exec mpc toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
