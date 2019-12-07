@@ -6,13 +6,13 @@ check_online() {
   interfaces=$(ls /sys/class/net | grep -v '^lo$')
   someup="0"
   for intf in $interfaces; do
-    if [[ $(cat /sys/class/net/$intf/operstate/) == "up" ]]; then
+    if [[ "x$(cat /sys/class/net/$intf/operstate/)" == "xup" ]]; then
       someup="1"
       break
     fi
   done
 
-  # if all interfaces are down, do not expect to be online, but it's ok
+  # if all interfaces are down do not expect to be online.
   if [ $someup -eq 0 ]; then
     echo "1"
   fi
@@ -26,4 +26,4 @@ check_online() {
 
 str="$(determine_online)"
 
-echo $str | sed s'/1/ /g'
+echo $str | tr -d "1"
