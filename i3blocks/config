@@ -1,7 +1,23 @@
+# dynamic stuff here!
+
 [music]
-command=sh ~/.config/i3blocks/scripts/mpc.sh
+command=~/.config/i3blocks/scripts/mpc.sh
 interval=10
 color=#FFFFFF
+
+[flags]
+command=~/.config/i3blocks/scripts/flags.sh
+color=#000000
+border=#FF9933
+border_left=10
+border_right=10
+background=#FF9933
+interval=10
+
+[dirtywr]
+command=~/.config/i3blocks/scripts/dirtywr.sh
+interval=60
+color=#A4C2F4
 
 [iface]
 command=~/.config/i3blocks/scripts/iface.sh
@@ -15,20 +31,11 @@ instance=enp2s0
 color=#22FF22
 interval=10
 
-[cloudflare]
-command=~/.config/i3blocks/scripts/online.sh
-interval=60
-color=#A4C2F4
-
-[dirtywr]
-command=~/.config/i3blocks/scripts/dirtywr.sh
-interval=60
-color=#A4C2F4
+# static stuff here
 
 [battery]
 command=~/.config/i3blocks/scripts/battery.sh
 interval=20
-#background=#FFDE03
 color=#FFFFFF
 
 [date]

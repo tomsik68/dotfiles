@@ -1,9 +1,9 @@
 #!/bin/sh
 
 acpi -b | \
-  sed -e s'/Battery 0://g' \
-      -e s'/Discharging//g' \
-      -e s'/Charging/\^/g' \
+  sed -e s'/Battery [0-9]://g' \
+      -e s'/Discharging, //g' \
+      -e s'/Charging, /\^/g' \
       -e s'/,//g' \
       -e s'/remaining//g' \
       -e s'/^ \+//g' \
