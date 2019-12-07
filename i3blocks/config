@@ -1,0 +1,43 @@
+[music]
+command=sh ~/.config/i3blocks/scripts/mpc.sh
+interval=10
+color=#FFFFFF
+
+[iface]
+command=~/.config/i3blocks/scripts/iface.sh
+instance=wlp3s0
+color=#4444FF
+interval=10
+
+[iface]
+command=~/.config/i3blocks/scripts/iface.sh
+instance=enp2s0
+color=#22FF22
+interval=10
+
+[cloudflare]
+command=~/.config/i3blocks/scripts/online.sh
+interval=60
+color=#A4C2F4
+
+[dirtywr]
+command=~/.config/i3blocks/scripts/dirtywr.sh
+interval=60
+color=#A4C2F4
+
+[battery]
+command=~/.config/i3blocks/scripts/battery.sh
+interval=20
+#background=#FFDE03
+color=#FFFFFF
+
+[date]
+command=date +"%a %b %d"
+interval=60
+#background=#0336FF
+
+[time]
+command=date +"%H:%M"
+interval=60
+color=#FFFFFF
+#background=#FFDE03
