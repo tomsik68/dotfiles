@@ -1,0 +1,4 @@
+#!/bin/sh
+json=$(curl 'https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&mkt=sk-SK&n=1')
+newlink="https://www.bing.com$(echo $json | grep -P -o 'url":"([^"]+)' | sed s'/url":"//g')"
+curl --output ~/pictures/notebook_bg.jpg $newlink
