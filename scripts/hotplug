@@ -1,0 +1,2 @@
+#!/bin/sh
+lsblk -l -n -o hotplug,path,type,mountpoint | grep -v "disk" | grep "^ *1" | column -t -o " " | cut -d " " --output-delimiter "is_mounted" -f 2,4 | grep -v "is_mounted" | rofi -dmenu | xargs udevil mount
