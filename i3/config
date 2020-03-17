@@ -176,3 +176,4 @@ new_window none
 exec feh --bg-fill ~/pictures/notebook_bg.jpg
 exec setxkbmap us cz_sk_de
 exec monlay left
+exec dunst
