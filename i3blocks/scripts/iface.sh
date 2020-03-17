@@ -7,7 +7,7 @@ if [ "x$state" == "xdown" ]; then
   exit 0
 fi
 
-ip_with_mask=$(ip addr show $intf | grep "scope global" | sed s'/ \+/ /g' | cut -d " " -f 3)
+ip_with_mask=$(ip -4 addr show $intf | grep "scope global" | xargs echo | cut -d " " -f 2)
 
 # copy IP functionality
 case $BLOCK_BUTTON in
