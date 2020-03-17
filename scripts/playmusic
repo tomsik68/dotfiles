@@ -1,6 +1,12 @@
 #!/bin/bash
 
-song=$HOME/music/$(fd -t f . ~/music | sed s":$HOME/music/::g" | rofi -matching fuzzy -dmenu -i -tokenize -p "play" | tr -d '\n')
+song=$(mpc listall | rofi -matching fuzzy -dmenu -i -tokenize -p "play")
+if [ $? -ne 0 ]; then
+  exit $?
+fi
 
-#mpc clear
-mpc add $song
+song=$(echo $song | tr -d '\n')
+
+mpc clear
+mpc add "$song"
+mpc play
