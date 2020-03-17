@@ -3,7 +3,6 @@
 [music]
 command=~/.config/i3blocks/scripts/mpc.sh
 interval=10
-color=#FFFFFF
 
 [flags]
 command=~/.config/i3blocks/scripts/flags.sh
@@ -13,6 +12,11 @@ border_left=10
 border_right=10
 background=#FF9933
 interval=10
+
+[netuse]
+command=~/.config/i3blocks/scripts/netuse.sh
+interval=30
+color=#A4C2F4
 
 [dirtywr]
 command=~/.config/i3blocks/scripts/dirtywr.sh
