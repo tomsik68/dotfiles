@@ -1,0 +1,14 @@
+#!/bin/bash
+
+infile=$1
+start_time=$2
+duration=$3
+height=$4
+outfile=$5
+
+if [ $# -eq 0 ]; then
+  echo "$0 [input] [start:time] [dura:tion] [height|-1] [output]"
+  exit 1
+fi
+
+ffmpeg -ss $start_time -i "$infile" -t $duration -vf scale=-1:$height "$outfile"

@@ -8,14 +8,12 @@ key="0xCA1D3571B1934B34"
 # make sure we have the key locally
 echo "Ensuring presence of encryption key:"
 echo ""
-gpg --recv-keys $key
+#gpg --recv-keys $key
 echo ""
 
-folder="`pwd`/$1"
-outdir="`mktemp -d`"
+folder="$(pwd)/$1"
 
-cd $outdir
-foldername="`basename $folder`"
+foldername="$(basename $folder)"
 # 1. compress the folder into a tgz
 echo "tar czf $folder"
 tar czf $foldername.tgz $folder
@@ -27,7 +25,6 @@ echo "rm $foldername.tgz"
 rm $foldername.tgz
 echo ""
 
-echo "Backup done to $outdir"
+echo "Backup done to $(pwd)"
 echo "Press enter to delete it."
 read
-rm -rf $outdir

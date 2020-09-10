@@ -1,0 +1,11 @@
+#!/bin/bash
+
+dir="$1"
+
+if [ -d "$dir" ]; then
+  echo "Directory already exists"
+  exit 1
+fi
+
+mkdir $dir
+mv *.* $dir/
