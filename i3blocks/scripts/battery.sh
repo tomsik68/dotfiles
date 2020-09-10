@@ -1,6 +1,6 @@
 #!/bin/sh
 
-acpi -b | \
+status=$(acpi -b | \
   sed -e s'/Battery [0-9]://g' \
       -e s'/Discharging, //g' \
       -e s'/Full, //g' \
@@ -10,4 +10,5 @@ acpi -b | \
       -e s'/^ \+//g' \
       -e s'/\+$//g' \
   |
-  cut -d ":" -f 1,2
+  cut -d ":" -f 1,2)
+printf '%-10s\n' "$status"
