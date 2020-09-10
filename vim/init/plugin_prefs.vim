@@ -50,7 +50,9 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#auto_complete_start_length=3
 call deoplete#custom#option('auto_complete_delay', 300)
 
-let g:ackprg='ag --nogroup --nocolor --column'
+if executable('rg')
+  let g:ackprg='rg --vimgrep'
+endif
 
 let g:neomake_make_maker = {
 \ 'exe': 'make',
