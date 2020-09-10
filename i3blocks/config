@@ -52,3 +52,7 @@ command=date +"%H:%M"
 interval=60
 color=#FFFFFF
 #background=#FFDE03
+
+[ecryptfs]
+command=~/.config/i3blocks/scripts/ecryptfs.sh
+interval=10
