@@ -7,4 +7,4 @@ fi
 
 pos=$1
 
-xrandr --output eDP-1 --auto --output DP-1 --auto --$pos-of eDP-1
+xrandr --output eDP1 --auto --output DP1 --auto --$pos-of eDP1
