@@ -79,3 +79,5 @@ let g:LanguageClient_serverCommands = {
   \ 'java': ['jdtls'],
   \ 'rust': ['rls'],
   \ }
+
+set scl=no
