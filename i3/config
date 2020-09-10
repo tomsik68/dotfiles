@@ -41,10 +41,12 @@ bindsym $mod+r exec rofi -modi run -show
 bindsym $mod+c sticky toggle
 bindsym $mod+p exec passmenu
 bindsym $mod+b exec ~/dotfiles/scripts/mpvclip
+bindsym $mod+s exec ~/dotfiles/scripts/rofibash
 bindsym Ctrl+$mod+f exec firefox
 bindsym Ctrl+$mod+v exec pavucontrol-qt
 bindsym $mod+n exec networkmanager_dmenu
 bindsym $mod+w exec rofi -modi window -show
+bindsym $mod+a exec roficalc
 bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrevious exec mpc prev
 bindsym XF86AudioPlay exec mpc toggle
@@ -175,5 +177,6 @@ bar {
 new_window none
 exec feh --bg-fill ~/pictures/background.jpg
 exec setxkbmap us cz_sk_de
-exec monlay left
 exec dunst
+exec unclutter
+exec picom
