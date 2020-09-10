@@ -74,7 +74,8 @@ let g:python_host_prog='/usr/bin/python2'
 let g:python3_host_prog='/usr/bin/python3'
 
 let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd'],
+  \ 'c': ['clangd', '--completion-style=detailed'],
+  \ 'cpp': ['clangd', '--completion-style=detailed'],
   \ 'java': ['jdtls'],
   \ 'rust': ['rls'],
   \ }
