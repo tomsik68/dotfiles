@@ -40,6 +40,8 @@ call dein#add('dag/vim-fish')
 call dein#add('FStarLang/VimFStar')
 call dein#add('bohlender/vim-smt2')
 call dein#add('christoomey/vim-tmux-navigator')
+call dein#add('pboettch/vim-cmake-syntax')
+call dein#add('kchmck/vim-coffee-script')
 call dein#end()
 call dein#save_state()
 
