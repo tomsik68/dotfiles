@@ -22,7 +22,7 @@ check_online() {
     echo "1"
   else
     # check if gateway is reachable
-    if ping -w 1 -c _gateway 2>/dev/null >/dev/null; then
+    if ping -w 1 -c 1 _gateway 2>/dev/null >/dev/null; then
       echo "I"
     else
       echo "G"
@@ -53,7 +53,7 @@ check_systemd() {
       echo "1"
       ;;
     *)
-      echo "S"
+      echo "U"
     ;;
   esac
 }
