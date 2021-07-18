@@ -24,10 +24,8 @@ call dein#add('Superbil/llvm.vim')
 call dein#add('uarun/vim-protobuf')
 call dein#add('vim-ruby/vim-ruby')
 call dein#add('fatih/vim-go')
-call dein#add('autozimu/LanguageClient-neovim', {
-    \ 'rev': 'dev',
-    \ 'build': 'bash install.sh',
-    \ })
+call dein#add('neovim/nvim-lspconfig')
+call dein#add('deoplete-plugins/deoplete-lsp')
 call dein#add('elzr/vim-json')
 call dein#add('rhysd/committia.vim')
 call dein#add('wlangstroth/vim-racket')
