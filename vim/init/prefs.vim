@@ -6,7 +6,7 @@ set history=50
 set expandtab softtabstop=4 tabstop=4 shiftwidth=4
 
 " use par for formatting
-set formatprg=par\ -w80rjc
+"set formatprg=par\ -w80rjc
 
 " enable smart case behavior in search & complete
 set smartcase

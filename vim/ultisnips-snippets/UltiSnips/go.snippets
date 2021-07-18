@@ -1,0 +1,25 @@
+snippet describe "ginkgo describe"
+var _ = ginkgo.Describe("${1}", func(){
+	${0}
+})
+endsnippet
+
+snippet context "ginkgo context"
+ginkgo.Context("${1}", func() {
+	${0}
+})
+endsnippet
+
+snippet it "ginkgo it"
+ginkgo.It("should ${1}", func() {
+	//gomega.Expect().To()
+})${0}
+endsnippet
+
+snippet exerr "ginkgo expect error"
+gomega.Expect(err).To(gomega.HaveOccurred())
+endsnippet
+
+snippet exp "gomega expect"
+gomega.Expect(${1}).To(gomega.Equal(${2}))
+endsnippet

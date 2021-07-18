@@ -23,7 +23,7 @@ set path+=**
 set wildmenu
 set browsedir=buffer
 
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+"au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
 
 " sane line joins on comments

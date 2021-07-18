@@ -9,6 +9,7 @@ status=$(acpi -b | \
       -e s'/remaining//g' \
       -e s'/^ \+//g' \
       -e s'/\+$//g' \
+      -e s'/100%\+$//g' \
   |
   cut -d ":" -f 1,2)
 printf '%-10s\n' "$status"
