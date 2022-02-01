@@ -1,10 +1,11 @@
 if &compatible
 	set nocompatible
 endif
+
 filetype plugin on
 
 source ~/dotfiles/vim/init/prefs.vim
-source ~/dotfiles/vim/init/dein_plugins.vim
+source ~/dotfiles/vim/init/plugins.vim
 source ~/dotfiles/vim/init/plugin_prefs.vim
 
 source ~/dotfiles/vim/init/appearance.vim
@@ -14,4 +15,3 @@ source ~/dotfiles/vim/init/commands.vim
 source ~/dotfiles/vim/init/behavior.vim
 source ~/dotfiles/vim/init/statusline.vim
 source ~/dotfiles/vim/init/makeprg.vim
-source ~/dotfiles/vim/init/lsp.vim
