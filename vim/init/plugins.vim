@@ -37,5 +37,7 @@ require "paq" {
     "dag/vim-fish";
     "pboettch/vim-cmake-syntax";
     "kchmck/vim-coffee-script";
+    "hashivim/vim-terraform";
+    "terrastruct/d2-vim";
 }
 EOF

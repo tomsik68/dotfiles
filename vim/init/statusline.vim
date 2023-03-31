@@ -22,7 +22,7 @@ set statusline=
 set statusline+=\ %{BuildStatus()}\ 
 "set statusline+=%{neomake#statusline#QflistStatus()}\ 
 " git info
-set statusline+=[%{fugitive#head()}]\ 
+set statusline+=[%{fugitive#Head()}]\ 
 " information about current file
 set statusline+=%f\ %h%w%M%R\ %=
 " end of default statusline (with ruler)
