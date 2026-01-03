@@ -25,6 +25,7 @@ bk_ln .config/i3status i3status
 [ -d ~/.emacs.d ] || mkdir ~/.emacs.d
 bk_ln .emacs.d/init.el emacs.d/init.el
 bk_ln .emacs.d/configuration.org emacs.d/configuration.org
+bk_ln .config/fish fish
 
 cd scripts
 git clone https://github.com/tomsik68/captain-hook.git
