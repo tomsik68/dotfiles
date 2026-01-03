@@ -18,15 +18,11 @@ check_online() {
     return
   fi
 
-  if ping -w 1 -c 1 1.1.1.1 2>/dev/null >/dev/null; then
+  # check if gateway is reachable
+  if ping -w 1 -c 1 _gateway 2>/dev/null >/dev/null; then
     echo "1"
   else
-    # check if gateway is reachable
-    if ping -w 1 -c 1 _gateway 2>/dev/null >/dev/null; then
-      echo "I"
-    else
-      echo "G"
-    fi
+    echo "G"
   fi
 }
 

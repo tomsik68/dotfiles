@@ -13,6 +13,11 @@ border_right=10
 background=#FF9933
 interval=10
 
+[pomodoro]
+command=~/.config/i3blocks/scripts/pomodoro.sh
+color=#FF0000
+interval=10
+
 [netuse]
 command=~/.config/i3blocks/scripts/netuse.sh
 interval=30
@@ -25,7 +30,7 @@ color=#A4C2F4
 
 [iface]
 command=~/.config/i3blocks/scripts/iface.sh
-instance=wlp3s0
+instance=wlan0
 color=#4444FF
 interval=10
 

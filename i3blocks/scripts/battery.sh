@@ -3,6 +3,8 @@
 status=$(acpi -b | \
   sed -e s'/Battery [0-9]://g' \
       -e s'/Discharging, //g' \
+      -e s'/Not charging, //g' \
+      -e s'/rate information unavailable//g' \
       -e s'/Full, //g' \
       -e s'/Charging, /\^/g' \
       -e s'/,//g' \
