@@ -21,6 +21,7 @@
     c = commit
     cs = commit -s
     gud = push
+    gusuoh = push --set-upstream origin HEAD
     ll = pull
     l  = log --oneline
     ld = log -c --oneline --notes
@@ -31,6 +32,7 @@
     shp = stash -p
     shs = stash show -p
     shki = stash save --keep-index
+    su = submodule
     tr = log --oneline --decorate --all --graph
 [url "https://aur.archlinux.org/"]
     insteadOf = "aur:"
@@ -46,3 +48,7 @@
 	program = gpg2
 [pull]
 	ff = only
+[init]
+	defaultBranch = main
+[diff]
+        tool = difftastic
