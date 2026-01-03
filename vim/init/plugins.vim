@@ -11,8 +11,6 @@ require "paq" {
     "hrsh7th/cmp-path";
     "hrsh7th/cmp-cmdline";
 
-    "SirVer/ultisnips";
-    "honza/vim-snippets";
     "tpope/vim-fugitive";
     "rhysd/vim-clang-format";
     "rust-lang/rust.vim";

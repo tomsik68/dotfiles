@@ -26,6 +26,7 @@ nnoremap <leader>c :ClangFormat<cr>
 nnoremap <leader>a= :Tab /=<cr>
 nnoremap <leader>a: :Tab /:<cr>
 
+nnoremap <space> zA
 " clear search pattern
 nnoremap <leader>\ :let @/=""<cr>
 

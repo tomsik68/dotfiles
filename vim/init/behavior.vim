@@ -21,7 +21,7 @@ set nowritebackup
 
 set path+=**
 set wildmenu
-set browsedir=buffer
+"set browsedir=buffer
 
 "au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 set completeopt=menuone,menu,longest,preview
