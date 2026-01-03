@@ -1,4 +1,4 @@
 #!/bin/sh
 cd ~/public/
 echo "Starting webserver in ~/public/"
-python2 -m SimpleHTTPServer 8000
+copyparty
