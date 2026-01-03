@@ -8,3 +8,4 @@ set PATH $PATH ~/bin
 set PATH $PATH ~/.config/composer/vendor/bin
 set PATH $PATH ~/.local/share/radare2/prefix/bin
 set PATH $PATH ~/.gem/ruby/2.6.0/bin/
+set PATH $PATH ~/.local/bin/
