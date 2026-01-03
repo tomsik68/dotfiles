@@ -1,6 +1,6 @@
 #!/bin/bash
 
-song=$(mpc listall | rofi -matching fuzzy -dmenu -i -tokenize -p "play")
+song=$(mpc listall | rofi -matching normal -dmenu -i -tokenize -p "play")
 if [ $? -ne 0 ]; then
   exit $?
 fi
